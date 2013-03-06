@@ -17,11 +17,10 @@ Windows
 OS X
 ----------
 * Open Finder
-* Hit Shift-Command-G or Go -> Go to Folder...
-* ~/.config/Nokia/qtcreator
-* create the templates folder if it does not exist, enter it
-* create the wizards folder inside of templates if it does not exist, enter it
-* copy this folder there.
+* Shift-Command-G or Go -> Go to Folder... 
+* ~/.config/Nokia/qtcreator/templates/wizards
+* Create/go into  "templates" then "wizard"
+* Copy this folder there.
 
 Linux
 ----------
