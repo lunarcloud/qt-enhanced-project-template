@@ -71,7 +71,7 @@ private:
 static bool resolveLibs()
 {
     if (!pDwmIsCompositionEnabled) {
-        QLibrary dwmLib(QString::fromAscii("dwmapi"));
+        QLibrary dwmLib("dwmapi");
         pDwmIsCompositionEnabled =(PtrDwmIsCompositionEnabled)dwmLib.resolve("DwmIsCompositionEnabled");
         pDwmExtendFrameIntoClientArea = (PtrDwmExtendFrameIntoClientArea)dwmLib.resolve("DwmExtendFrameIntoClientArea");
         pDwmEnableBlurBehindWindow = (PtrDwmEnableBlurBehindWindow)dwmLib.resolve("DwmEnableBlurBehindWindow");
@@ -124,7 +124,7 @@ bool QtWin::enableBlurBehindWindow(QWidget *widget, bool enable)
         bb.hRgnBlur = NULL;
         widget->setAttribute(Qt::WA_TranslucentBackground, enable);
         widget->setAttribute(Qt::WA_NoSystemBackground, enable);
-        hr = pDwmEnableBlurBehindWindow(widget->winId(), &bb);
+        hr = pDwmEnableBlurBehindWindow((HWND)widget->winId(), &bb);
         if (SUCCEEDED(hr)) {
             result = true;
             windowNotifier()->addWidget(widget);
@@ -158,10 +158,10 @@ bool QtWin::extendFrameIntoClientArea(QWidget *widget, int left, int top, int ri
     bool result = false;
 #ifdef Q_OS_WIN
     if (resolveLibs()) {
-        QLibrary dwmLib(QString::fromAscii("dwmapi"));
+        QLibrary dwmLib("dwmapi");
         HRESULT hr = S_OK;
         MARGINS m = {left, top, right, bottom};
-        hr = pDwmExtendFrameIntoClientArea(widget->winId(), &m);
+        hr = pDwmExtendFrameIntoClientArea((HWND)widget->winId(), &m);
         if (SUCCEEDED(hr)) {
             result = true;
             windowNotifier()->addWidget(widget);
@@ -185,7 +185,7 @@ QColor QtWin::colorizatinColor()
     if (resolveLibs()) {
         DWORD color = 0;
         BOOL opaque = FALSE;
-        QLibrary dwmLib(QString::fromAscii("dwmapi"));
+        QLibrary dwmLib("dwmapi");
         HRESULT hr = S_OK;
         hr = pDwmGetColorizationColor(&color, &opaque);
         if (SUCCEEDED(hr))
@@ -217,6 +217,7 @@ bool WindowNotifier::winEvent(MSG *message, long *result)
             widget->update();
         }
     }
-    return QWidget::winEvent(message, result);
+    return QWidget::nativeEvent("windows_generic_MSG", message, result);
 }
 #endif
+
