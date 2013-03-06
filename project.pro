@@ -12,6 +12,7 @@
 #-------------------------------------------------
 
 QT       += core gui%QtNetwork%%QtDBus%%QtSQL%%QtWebkit%%OpenGL%
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TEMPLATE = app
 
 win32   {
