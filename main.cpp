@@ -1,6 +1,5 @@
-#include <QtGui/QApplication>
+#include <QApplication>
 #include "mainwindow.h"
-
 #ifdef Q_OS_WIN
     #include "qtwin/qtwin.h"
 #endif
