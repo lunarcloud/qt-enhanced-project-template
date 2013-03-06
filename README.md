@@ -1,7 +1,9 @@
-qt-enhanced-project-template
+Qt Enhanced Project
 ============================
 
-Qt project template wizards for starting new projects that are deployable and cross-platform. A great way to jumpstart a project.
+Qt project template wizards for starting new projects that are deployable and cross-platform. 
+A great way to jumpstart a project.
+
 
 To Install
 ==========
