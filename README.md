@@ -6,18 +6,15 @@ A great way to jumpstart a project.
 
 
 Install
-=================
+-------
 git clone into the qt creator's templates/wizards folder.
 This way updating and commiting fixes will be a nap!
 
-Windows
-----------
-C:\Qt\ **Version**\Tools\QtCreator\share\qtcreator\templates\wizards
+### Windows
+`C:\Qt\Qt5.X.X\Tools\QtCreator\share\qtcreator\templates\wizards`
 
-OS X
-----------
-~/.config/Nokia/qtcreator/templates/wizards
+### OS X
+`~/.config/Nokia/qtcreator/templates/wizards`
 
-Linux
-----------
-/usr/share/qtcreator/templates/wizards
+### Linux
+`/usr/share/qtcreator/templates/wizards`
