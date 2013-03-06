@@ -2,9 +2,9 @@
 #include "ui_mainwindow.h"
 #include <QtGui>
 #include <QMessageBox>
-#if QT_VERSION >= 0x050000
+#if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
 #include <QtWidgets>
-#endif 
+#endif
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     extern void qt_mac_set_dock_menu(QMenu *);
     qt_mac_set_dock_menu(menu);
-    
+
     setUnifiedTitleAndToolBarOnMac(true);
 #endif
 
@@ -29,7 +29,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->action_About,SIGNAL(triggered()),this,SLOT(about()));
     connect(ui->action_Quit,SIGNAL(triggered()),qApp,SLOT(quit()));
     connect(qApp,SIGNAL(aboutToQuit()),this,SLOT(writeSettings()));
-    
+
     readSettings();
 }
 
