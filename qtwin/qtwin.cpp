@@ -217,7 +217,11 @@ bool WindowNotifier::winEvent(MSG *message, long *result)
             widget->update();
         }
     }
+#if QT_VERSION >= 0x050000
     return QWidget::nativeEvent("windows_generic_MSG", message, result);
+#else
+    return QWidget::winEvent(message, result);
+#endif
 }
 #endif
 

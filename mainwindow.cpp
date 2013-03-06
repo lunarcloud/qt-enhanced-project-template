@@ -2,6 +2,9 @@
 #include "ui_mainwindow.h"
 #include <QtGui>
 #include <QMessageBox>
+#if QT_VERSION >= 0x050000
+#include <QtWidgets>
+#endif 
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
