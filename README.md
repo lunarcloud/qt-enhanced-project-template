@@ -14,7 +14,7 @@ Windows
 * Copy this folder there.
 
 
-MAC OSX
+Mac OS X
 ----------
 * Open Finder
 * Hit Shift-Command-G or Go -> Go to Folder...
