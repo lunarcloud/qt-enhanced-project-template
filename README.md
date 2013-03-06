@@ -12,7 +12,7 @@ This way updating and commiting fixes will be a nap!
 
 Windows
 ----------
-C:\Qt\__<version>__\Tools\QtCreator\share\qtcreator\templates\wizards
+C:\Qt\ **Version**\Tools\QtCreator\share\qtcreator\templates\wizards
 
 OS X
 ----------
