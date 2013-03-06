@@ -66,4 +66,4 @@ OTHER_FILES += application.desktop \
                icons/application-%ProjectName%.icns \
                icons/%ProjectName%.ico \
                %ProjectName%.rc \
-               README.txt
+               README.md
