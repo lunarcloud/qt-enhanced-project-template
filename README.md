@@ -5,23 +5,19 @@ Qt project template wizards for starting new projects that are deployable and cr
 A great way to jumpstart a project.
 
 
-To Install
-==========
+Install
+=================
+git clone into the qt creator's templates/wizards folder.
+This way updating and commiting fixes will be a nap!
 
 Windows
 ----------
-* Open your Qt SDK folder then go to QtCreator/share/qtcreator/templates/wizards/
-* Copy this folder there.
-
+C:\Qt\__<version>__\Tools\QtCreator\share\qtcreator\templates\wizards
 
 OS X
 ----------
-* Open Finder
-* Shift-Command-G or Go -> Go to Folder... 
-* ~/.config/Nokia/qtcreator/templates/wizards
-* Create/go into  "templates" then "wizard"
-* Copy this folder there.
+~/.config/Nokia/qtcreator/templates/wizards
 
 Linux
 ----------
-* Copy this folder to /usr/share/qtcreator/templates/wizards
+/usr/share/qtcreator/templates/wizards
