@@ -1,7 +1,7 @@
 #include <QtGui/QApplication>
 #include "mainwindow.h"
 
-#ifdef Q_WS_WIN
+#ifdef Q_OS_WIN
     #include "qtwin/qtwin.h"
 #endif
 
@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
     
     MainWindow window;
 
-#ifdef Q_WS_WIN
+#ifdef Q_OS_WIN
     if (QtWin::isCompositionEnabled()) {
         QtWin::extendFrameIntoClientArea(&window);
         window.setContentsMargins(0, 0, 0, 5);

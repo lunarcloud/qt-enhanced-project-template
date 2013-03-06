@@ -1,2 +1,2 @@
-IDI_ICON1   ICON    DISCARDABLE "icons/%ProjectName%.ico"
+IDI_ICON1   ICON    "icons/%ProjectName%.ico"
 

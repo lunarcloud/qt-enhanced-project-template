@@ -6,10 +6,7 @@
 #
 # @author %author%
 #
-# made with the cross-platform app template 
-# from lunarcloud <http://sjsarette.blogspot.com>
-#
-#-------------------------------------------------
+##-------------------------------------------------
 
 QT       += core gui%QtNetwork%%QtDBus%%QtSQL%%QtWebkit%%OpenGL%
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets

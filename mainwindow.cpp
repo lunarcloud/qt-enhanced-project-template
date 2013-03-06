@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowTitle("%ProductName%");
 
-#ifdef Q_WS_MAC
+#ifdef Q_OS_MAC
 
     /* Dock Menu */
     QMenu *menu = new QMenu;
