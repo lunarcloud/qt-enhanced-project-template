@@ -15,7 +15,7 @@
     <key>CFBundleIdentifier</key>
     <string>com.example.%Company%</string>
     <key>CFBundleIconFile</key>
-    <string>icons/application-%ProjectName%.icns</string>
+    <string>application-%ProjectName%.icns</string>
     <key>NSHumanReadableCopyright</key>
     <string>Copyright © %year%, %Company%</string>
     <key>LSApplicationCategoryType</key>
