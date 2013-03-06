@@ -1,0 +1,5 @@
+%ProjectName:c% (0.1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- %author% <%email%>  Fri, 01 Apr 2011 23:19:59 -0400

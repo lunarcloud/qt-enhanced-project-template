@@ -1,0 +1,21 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Comment[en_US]= 
+Comment=
+Exec=/usr/bin/%ProjectName:c%
+GenericName[en_US]= %ProductName%
+GenericName= %ProductName%
+Icon= application-%ProjectName:c%.png
+MimeType=
+Name[en_US]= %ProductName%
+Name= %ProductName%
+Path= 
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+Categories=Qt;%CATEGORY%
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=

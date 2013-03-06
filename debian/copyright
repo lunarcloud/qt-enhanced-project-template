@@ -1,0 +1,26 @@
+This work was packaged for Debian by:
+
+    %author% <%email%> on %year%
+
+It was downloaded from:
+
+    <%homepage%>
+
+Upstream Author(s):
+
+    %author% <%email%>
+
+Copyright:
+
+    <Copyright (C) %year% %author%>
+
+License:
+
+    see "/usr/share/common-licenses/%license%".
+
+The Debian packaging is:
+
+    Copyright (C) year %author% <%email%>
+
+and is licensed,
+see "/usr/share/common-licenses/%license%".
