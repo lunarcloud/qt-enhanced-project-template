@@ -6,6 +6,10 @@
 #include <QtWidgets>
 #endif
 
+#ifdef Q_OS_MAC
+extern void qt_mac_set_dock_menu(QMenu *);
+#endif
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -19,7 +23,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QMenu *menu = new QMenu;
     // Add actions to the menu
 
-    extern void qt_mac_set_dock_menu(QMenu *);
     qt_mac_set_dock_menu(menu);
 
     setUnifiedTitleAndToolBarOnMac(true);
