@@ -42,6 +42,7 @@
 		<!--  Misc Files -->
 		<file source="application.desktop" target="application-%ProjectName%.desktop" openeditor="false"/>
         <file source="application.rc" target="%ProjectName%.rc" openeditor="false"/>
+        <file source="Info.plist" target="Info.plist" openeditor="false"/>
         <file source="_README.md" target="README.md" openeditor="true"/>
         
 		<!-- Project File -->

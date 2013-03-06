@@ -28,11 +28,7 @@ macx   {
     CONFIG += x86
     QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.6
     ICON = icons/application-%ProjectName%.icns
-
-    # Uncomment for Custom Info.plist
-    #plist.path = "$$DESTDIR/$$join(TARGET,,,.app)/Contents"
-    #plist.files = Info.plist
-    #INSTALLS += plist
+    QMAKE_INFO_PLIST = Info.plist
 }
 
 linux-*   {
@@ -63,4 +59,5 @@ OTHER_FILES += application.desktop \
                icons/application-%ProjectName%.icns \
                icons/%ProjectName%.ico \
                %ProjectName%.rc \
+               Info.plist \
                README.md
