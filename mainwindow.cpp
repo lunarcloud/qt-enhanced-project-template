@@ -24,6 +24,10 @@ MainWindow::MainWindow(QWidget *parent) :
     // Add actions to the menu
 
     qt_mac_set_dock_menu(menu);
+    
+#if QT_VERSION < QT_VERSION_CHECK(5, 0, 0)
+    setUnifiedTitleAndToolBarOnMac(true);
+#endif
 #endif
 
     connect(ui->actionAbout_Qt,SIGNAL(triggered()),qApp,SLOT(aboutQt()));
