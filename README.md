@@ -7,6 +7,7 @@ A great way to jumpstart a project.
 Qt 4 & 5
 ------
 Projects will be compatible and enhanced by Qt5 features.
+
 Because we value cross-platform compatibility, Qt4 should be supported until KDE has transitioned to Qt5,
 otherwise, we would effectively be incompatible with Linux.
 
