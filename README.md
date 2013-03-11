@@ -15,7 +15,7 @@ otherwise, we would effectively be incompatible with Linux.
 Install
 -------
 git clone into the qt creator's templates/wizards folder.
-This way updating and commiting fixes will be a nap!
+This way updating and commiting fixes will be a snap!
 
 ### Windows
 `C:\Qt\Qt5.X.X\Tools\QtCreator\share\qtcreator\templates\wizards`
