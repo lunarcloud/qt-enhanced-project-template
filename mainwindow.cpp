@@ -2,8 +2,15 @@
 #include "ui_mainwindow.h"
 #include <QtGui>
 #include <QMessageBox>
+
 #if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
-#include <QtWidgets>
+    #include <QtWidgets>
+#endif
+
+#ifdef Q_OS_WIN
+#if QT_VERSION >= QT_VERSION_CHECK(5, 2, 0)
+    #include <QWinFunctions>
+#endif
 #endif
 
 #ifdef Q_OS_MAC
@@ -24,12 +31,23 @@ MainWindow::MainWindow(QWidget *parent) :
     // Add actions to the menu
 
     qt_mac_set_dock_menu(menu);
-    
+
 #if QT_VERSION < QT_VERSION_CHECK(5, 0, 0)
     setUnifiedTitleAndToolBarOnMac(true);
 #endif
 #endif
 
+#ifdef Q_OS_WIN
+#if QT_VERSION >= QT_VERSION_CHECK(5, 2, 0)
+    /* Jump List */
+    QWinJumpList jumplist;
+    jumplist.begin();
+    //Add categories, tasks, items, and links to the menu
+
+    jumplist.commit();
+#endif
+#endif
+    
     connect(ui->actionAbout_Qt,SIGNAL(triggered()),qApp,SLOT(aboutQt()));
     connect(ui->action_About,SIGNAL(triggered()),this,SLOT(about()));
     connect(ui->action_Quit,SIGNAL(triggered()),qApp,SLOT(quit()));

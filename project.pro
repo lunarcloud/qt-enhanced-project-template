@@ -13,6 +13,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TEMPLATE = app
 
 win32   {
+    QT += winextras
     TARGET = "%ProductName%"
 
     SOURCES += qtwin/qtwin.cpp
@@ -22,6 +23,7 @@ win32   {
 }
 
 macx   {
+    QT += macextras
     TARGET = "%ProductName%"
 
     ICON = icons/application-%ProjectName%.icns
@@ -29,6 +31,7 @@ macx   {
 }
 
 linux-*   {
+    QT += dbus
     TARGET = %ProjectName%
 
     target.path = /usr/bin
@@ -39,7 +42,6 @@ linux-*   {
 
     INSTALLS += target icon desktop
 }
-
 
 SOURCES += main.cpp\
         mainwindow.cpp \
