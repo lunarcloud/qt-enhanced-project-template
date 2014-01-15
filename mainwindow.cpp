@@ -30,9 +30,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     qt_mac_set_dock_menu(menu);
 
-#if QT_VERSION < QT_VERSION_CHECK(5, 0, 0)
     setUnifiedTitleAndToolBarOnMac(true);
-#endif
 #endif
 
 #ifdef QT_WINEXTRAS_LIB
