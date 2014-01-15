@@ -1,10 +1,8 @@
 #include <QApplication>
 #include "mainwindow.h"
 
-#ifdef Q_OS_WIN
-#if QT_VERSION >= QT_VERSION_CHECK(5, 2, 0)
+#ifdef QT_WINEXTRAS_LIB
     #include <QWinFunctions>
-#endif
 #endif
 
 #ifdef Q_OS_LINUX
@@ -19,16 +17,14 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationName("%Company%");
     QCoreApplication::setOrganizationDomain("%homepage%");
     QCoreApplication::setApplicationName("%ProductName%");
-    
+
     MainWindow window;
 
-#ifdef Q_OS_WIN
-#if QT_VERSION >= QT_VERSION_CHECK(5, 2, 0)
+#ifdef QT_WINEXTRAS_LIB
     if (QtWin::isCompositionEnabled()) {
         QtWin::extendFrameIntoClientArea(&window);
         window.setContentsMargins(0, 0, 0, 5);
     }
-#endif
 #endif
 
 #ifdef Q_OS_LINUX
@@ -43,7 +39,7 @@ int main(int argc, char *argv[])
     signal << setProperty;
     QDBusConnection::sessionBus().send(signal);
 #endif
-   
+
     window.show();
 
     return a.exec();

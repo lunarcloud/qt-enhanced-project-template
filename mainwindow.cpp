@@ -7,10 +7,8 @@
     #include <QtWidgets>
 #endif
 
-#ifdef Q_OS_WIN
-#if QT_VERSION >= QT_VERSION_CHECK(5, 2, 0)
+#ifdef QT_WINEXTRAS_LIB
     #include <QWinFunctions>
-#endif
 #endif
 
 #ifdef Q_OS_MAC
@@ -37,15 +35,13 @@ MainWindow::MainWindow(QWidget *parent) :
 #endif
 #endif
 
-#ifdef Q_OS_WIN
-#if QT_VERSION >= QT_VERSION_CHECK(5, 2, 0)
+#ifdef QT_WINEXTRAS_LIB
     /* Jump List */
     QWinJumpList jumplist;
     jumplist.begin();
     //Add categories, tasks, items, and links to the menu
 
     jumplist.commit();
-#endif
 #endif
     
     connect(ui->actionAbout_Qt,SIGNAL(triggered()),qApp,SLOT(aboutQt()));
