@@ -1,7 +1,7 @@
 README
 =======
 
-Windows 
+Windows
 ----------
 Blur behind is enabled, extending the glass to the toolbars, and other Windows sexiness from here: http://labs.qt.nokia.com/2009/09/15/using-blur-behind-on-windows/
 There's also an rc file and ico.
@@ -10,7 +10,7 @@ There's also an rc file and ico.
 * Use dependency walker to find the DLL files you'll need to include: http://www.dependencywalker.com/
 * Then use an installer maker, I suggest Inno Setup due to it being easy: http://www.jrsoftware.org/isinfo.php
 
-OS X 
+OS X
 ----------
 For Mac, an empty menu to add actions to is included, which will show up as the dock's menu.
 Unified title and toolbar is enabled, creating the very mac effect of your toolbars being on the outside of the app, like in Finder or iTunes.
@@ -18,7 +18,7 @@ There's an included icns file.
 
 ### Deployment
 * Run the app in Qt Creator in "Release" mode.
-* Open Terminal.app 
+* Open Terminal.app
 * `cd /Users/sam/Source/projectx-build-desktop`
 * `macdeployqt -dmg ProjectX.app`
 
@@ -41,7 +41,7 @@ Icons
 PNG: Any drawing program
 * http://www.gimp.org/
 
-ICNS: Convert from PNG 
+ICNS: Convert from PNG
 * sudo apt-get install icnsutils
 * http://www.img2icnsapp.com/
 

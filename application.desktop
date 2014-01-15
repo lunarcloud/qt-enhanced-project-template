@@ -1,6 +1,6 @@
 #!/usr/bin/env xdg-open
 [Desktop Entry]
-Comment[en_US]= 
+Comment[en_US]=
 Comment=
 Exec=/usr/bin/%ProjectName:c%
 GenericName[en_US]= %ProductName%
@@ -9,7 +9,7 @@ Icon= application-%ProjectName:c%.png
 MimeType=
 Name[en_US]= %ProductName%
 Name= %ProductName%
-Path= 
+Path=
 StartupNotify=true
 Terminal=false
 TerminalOptions=

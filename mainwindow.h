@@ -12,7 +12,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 protected:
-    
+
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
@@ -20,13 +20,13 @@ public:
 private:
     Ui::MainWindow *ui;
     void readSettings();
-    
+
 private slots:
     void about();
     void writeSettings();
 
 signals:
-  
+
 };
 
 #endif // MAINWINDOW_H
