@@ -11,7 +11,7 @@
     #include <QWinFunctions>
 #endif
 
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACX
 extern void qt_mac_set_dock_menu(QMenu *);
 #endif
 
@@ -22,7 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowTitle("%ProductName%");
 
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACX
 
     /* Dock Menu */
     QMenu *menu = new QMenu;
@@ -43,7 +43,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     jumplist.commit();
 #endif
-    
+
     connect(ui->actionAbout_Qt,SIGNAL(triggered()),qApp,SLOT(aboutQt()));
     connect(ui->action_About,SIGNAL(triggered()),this,SLOT(about()));
     connect(ui->action_Quit,SIGNAL(triggered()),qApp,SLOT(quit()));
