@@ -16,9 +16,6 @@ win32   {
     QT += winextras
     TARGET = "%ProductName%"
 
-    SOURCES += qtwin/qtwin.cpp
-    HEADERS += qtwin/qtwin.h
-
     RC_FILE = %ProjectName%.rc
 }
 
