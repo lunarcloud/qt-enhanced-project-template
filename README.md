@@ -18,7 +18,8 @@ git clone into the qt creator's templates/wizards folder.
 This way updating and commiting fixes will be a snap!
 
 ### Windows
-`C:\Qt\Qt5.X.X\Tools\QtCreator\share\qtcreator\templates\wizards`
+Starting where your Qt Creator application is installed:
+`\share\qtcreator\templates\wizards`
 
 ### OS X
 `~/.config/Nokia/qtcreator/templates/wizards`
