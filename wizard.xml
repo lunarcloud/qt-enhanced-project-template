@@ -22,10 +22,6 @@
         <file source="mainwindow.cpp" openeditor="true"/>
         <file source="mainwindow.ui" openeditor="false"/>
 
-        <!-- Windows 7 stuff -->
-        <file source="qtwin/qtwin.h" openeditor="false"/>
-        <file source="qtwin/qtwin.cpp" openeditor="false"/>
-
         <!-- Debian files -->
         <file source="debian/changelog" openeditor="false"/>
         <file source="debian/compat" openeditor="false"/>
