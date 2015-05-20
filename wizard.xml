@@ -6,7 +6,8 @@
 **
 **************************************************************************/
 -->
-<wizard version="1.2" kind="project" class="qt4project" firstpage="10"
+<wizard version="1"  kind="project"
+        class="qmakeproject" firstpage="10"
         id="A.CrossPlatformApp" category="B.EnhancedProjects">
     <icon>Qt.png</icon>
     <description>
