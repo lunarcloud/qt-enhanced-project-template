@@ -2,7 +2,7 @@
 #include "mainwindow.h"
 
 #ifdef Q_OS_WIN
-    #include <QWinFunctions>
+    #include <QtWinExtras>
 #endif
 
 #ifdef Q_OS_LINUX

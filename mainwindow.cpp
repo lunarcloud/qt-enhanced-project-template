@@ -8,7 +8,7 @@
 #endif
 
 #ifdef Q_OS_WIN
-    #include <QWinExtras>
+    #include <QtWinExtras>
 #endif
 
 #ifdef Q_OS_MACX
