@@ -16,6 +16,9 @@ This way updating and commiting fixes will be a snap!
 Starting where your Qt Creator application is installed:
 `\share\qtcreator\templates\wizards`
 
+So, for example:
+`C:\Qt\Qt5.4.1\Tools\QtCreator\share\qtcreator\templates\wizards`
+
 ### OS X
 `~/.config/Nokia/qtcreator/templates/wizards`
 
