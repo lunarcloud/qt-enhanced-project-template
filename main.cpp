@@ -1,7 +1,7 @@
 #include <QApplication>
 #include "mainwindow.h"
 
-#ifdef QT_WINEXTRAS_LIB
+#ifdef Q_OS_WIN
     #include <QWinFunctions>
 #endif
 
@@ -20,11 +20,17 @@ int main(int argc, char *argv[])
 
     MainWindow window;
 
-#ifdef QT_WINEXTRAS_LIB
+#ifdef Q_OS_WIN
     if (QtWin::isCompositionEnabled()) {
-        QtWin::extendFrameIntoClientArea(&window);
-        window.setContentsMargins(0, 0, 0, 5);
-    }
+            QtWin::extendFrameIntoClientArea(&window, -1, -1, -1, -1);
+            window.setAttribute(Qt::WA_TranslucentBackground, true);
+            window.setAttribute(Qt::WA_NoSystemBackground, false);
+            window.setStyleSheet("MainWindow { background: transparent; }");
+        } else {
+            QtWin::resetExtendedFrame(&window);
+            window.setAttribute(Qt::WA_TranslucentBackground, false);
+            //window.setStyleSheet(QString("MainWindow { background: %1; }").arg(QtWin::realColorizationColor().name()));
+        }
 #endif
 
 #ifdef Q_OS_LINUX
