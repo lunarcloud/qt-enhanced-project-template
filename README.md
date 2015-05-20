@@ -26,3 +26,7 @@ Starting where your Qt Creator application is installed:
 
 ### Linux
 `/usr/share/qtcreator/templates/wizards`
+
+So you may install it via:
+
+`cd /usr/share/qtcreator/templates/wizards && sudo git clone https://github.com/lunarcloud/qt-enhanced-project-template.git`
