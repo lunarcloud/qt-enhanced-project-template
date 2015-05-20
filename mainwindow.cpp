@@ -7,8 +7,8 @@
     #include <QtWidgets>
 #endif
 
-#ifdef QT_WINEXTRAS_LIB
-    #include <QWinFunctions>
+#ifdef Q_OS_WIN
+    #include <QWinExtras>
 #endif
 
 #ifdef Q_OS_MACX
@@ -33,13 +33,10 @@ MainWindow::MainWindow(QWidget *parent) :
     setUnifiedTitleAndToolBarOnMac(true);
 #endif
 
-#ifdef QT_WINEXTRAS_LIB
+#ifdef Q_OS_WIN
     /* Jump List */
     QWinJumpList jumplist;
-    jumplist.begin();
     //Add categories, tasks, items, and links to the menu
-
-    jumplist.commit();
 #endif
 
     connect(ui->actionAbout_Qt,SIGNAL(triggered()),qApp,SLOT(aboutQt()));
