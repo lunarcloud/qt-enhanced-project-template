@@ -12,7 +12,8 @@
 #endif
 
 #ifdef Q_OS_MACX
-extern void qt_mac_set_dock_menu(QMenu *);
+    #include <QtMac>
+    extern void qt_mac_set_dock_menu(QMenu *);
 #endif
 
 MainWindow::MainWindow(QWidget *parent) :
