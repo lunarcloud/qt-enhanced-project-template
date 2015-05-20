@@ -1,16 +1,11 @@
 Qt Enhanced Project
 ============================
-
 Qt project template wizards for starting new projects that are deployable and cross-platform.
 A great way to jumpstart a project.
 
-Qt 4 & 5
+Qt 4
 ------
-Projects will be compatible and enhanced by Qt5 features.
-
-Because we value cross-platform compatibility, Qt4 should be supported until KDE has transitioned to Qt5,
-otherwise, we would effectively be incompatible with Linux.
-
+Qt4 support is no longer guarunteed.
 
 Install
 -------
