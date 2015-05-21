@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#ifdef Q_OS_LINUX
+    #include <QtDBus>
+#endif
 
 namespace Ui {
 class MainWindow;

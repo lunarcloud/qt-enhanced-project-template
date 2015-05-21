@@ -108,6 +108,18 @@ void MainWindow::setIconNumber(int number)
     taskbarButton->setOverlayIcon(QIcon(QPixmap::fromImage(image)));
 #endif
 
+#ifdef Q_OS_LINUX
+    QDBusMessage signal = QDBusMessage::createSignal("/", "com.canonical.Unity.LauncherEntry", "Update");
+    signal << "application://%ProductName%.desktop";
+    QVariantMap setProperty;
+    setProperty.insert("count", qint64(number));
+    setProperty.insert("count-visible", true);
+    setProperty.insert("progress", double(0.00));
+    setProperty.insert("progress-visible", false);
+    setProperty.insert("urgent", true);
+    signal << setProperty;
+    QDBusConnection::sessionBus().send(signal);
+#endif
 }
 
 void MainWindow::clearIconNumber()
@@ -119,6 +131,19 @@ void MainWindow::clearIconNumber()
 
 #ifdef Q_OS_WIN
     taskbarButton->clearOverlayIcon();
+#endif
+
+#ifdef Q_OS_LINUX
+    QDBusMessage signal = QDBusMessage::createSignal("/", "com.canonical.Unity.LauncherEntry", "Update");
+    signal << "application://%ProductName%.desktop";
+    QVariantMap setProperty;
+    setProperty.insert("count", qint64(0));
+    setProperty.insert("count-visible", false);
+    setProperty.insert("progress", double(0.00));
+    setProperty.insert("progress-visible", false);
+    setProperty.insert("urgent", false);
+    signal << setProperty;
+    QDBusConnection::sessionBus().send(signal);
 #endif
 }
 
