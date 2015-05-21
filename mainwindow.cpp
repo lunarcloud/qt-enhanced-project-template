@@ -35,6 +35,9 @@ MainWindow::MainWindow(QWidget *parent) :
 #endif
 
 #ifdef Q_OS_WIN
+    taskbarButton = new QWinTaskbarButton(this);
+    taskbarButton->setWindow(this->windowHandle());
+	
     /* Jump List */
     QWinJumpList jumplist;
     //Add categories, tasks, items, and links to the menu
@@ -53,6 +56,15 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::showEvent(QShowEvent *e)
+{
+#ifdef Q_OS_WIN32
+    taskbarButton->setWindow(this->windowHandle());
+#endif
+
+    e->accept();
+}
+
 void MainWindow::about()
 {
     QMessageBox::about(this,
@@ -64,6 +76,50 @@ void MainWindow::about()
                        + QString("License: %license%<br>")
                        + QString("<b>Copyright &copy; %year%, %Company%</b>")
                        );
+}
+
+void MainWindow::setIconNumber(int number)
+{
+#ifdef Q_OS_MACX
+        QtMac::setApplicationIconBadgeNumber(number);
+#endif
+
+#ifdef Q_OS_WIN
+    QString value = QString::number(number);
+    if (number > 99) value = "+";
+    if (number < -99) value = "-";
+
+    QImage image = QImage(64,64,QImage::Format_ARGB32);
+    QPainter painter(&image);
+    painter.setBackgroundMode(Qt::TransparentMode);
+    painter.setBrush(QBrush(Qt::red));
+    painter.drawEllipse(0, 0, 64, 64);
+    painter.setPen(Qt::white);
+
+    int fontsize = value == "+" ? 54 : ( value.length() == 1 ? 48 : 32 );
+    painter.setFont(QFont("Segoe UI", fontsize, QFont::Bold));
+
+    int antimargin = value == "+" ? -8 : -4;
+    painter.drawText(0, antimargin, 64, 64,
+                     Qt::AlignCenter|Qt::AlignTop,
+                     value);
+
+//    taskbarButton->clearOverlayIcon();
+    taskbarButton->setOverlayIcon(QIcon(QPixmap::fromImage(image)));
+#endif
+
+}
+
+void MainWindow::clearIconNumber()
+{
+
+#ifdef Q_OS_MACX
+    QtMac::setApplicationIconBadgeNumber(number);
+#endif
+
+#ifdef Q_OS_WIN
+    taskbarButton->clearOverlayIcon();
+#endif
 }
 
 void MainWindow::writeSettings()
