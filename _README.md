@@ -3,8 +3,7 @@ README
 
 Windows
 ----------
-Blur behind is enabled, extending the glass to the toolbars, and other Windows sexiness from here: http://labs.qt.nokia.com/2009/09/15/using-blur-behind-on-windows/
-There's also an rc file and ico.
+Blur behind is enabled, extending the glass to the toolbars, an rc file and an ico style icon.
 
 ### Deployment
 * Use dependency walker to find the DLL files you'll need to include: http://www.dependencywalker.com/
@@ -13,7 +12,7 @@ There's also an rc file and ico.
 OS X
 ----------
 For Mac, an empty menu to add actions to is included, which will show up as the dock's menu.
-Unified title and toolbar is enabled, creating the very mac effect of your toolbars being on the outside of the app, like in Finder or iTunes.
+Unified title and toolbar is enablable, creating the very mac effect of your toolbars being on the outside of the app, like in Finder or iTunes.
 There's an included icns file.
 
 ### Deployment
