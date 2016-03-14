@@ -81,7 +81,7 @@ void MainWindow::about()
 void MainWindow::setIconNumber(int number)
 {
 #ifdef Q_OS_MACX
-        QtMac::setApplicationIconBadgeNumber(number);
+    QtMac::setBadgeLabelText(QString::number(number));
 #endif
 
 #ifdef Q_OS_WIN
@@ -126,7 +126,7 @@ void MainWindow::clearIconNumber()
 {
 
 #ifdef Q_OS_MACX
-    QtMac::setApplicationIconBadgeNumber(number);
+    QtMac::setBadgeLabelText(QString());
 #endif
 
 #ifdef Q_OS_WIN
