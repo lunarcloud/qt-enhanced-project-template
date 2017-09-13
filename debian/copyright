@@ -1,26 +1,26 @@
 This work was packaged for Debian by:
 
-    %author% <%email%> on %year%
+    %{author} <%{email}> on %{year}
 
 It was downloaded from:
 
-    <%homepage%>
+    <%{homepage}>
 
 Upstream Author(s):
 
-    %author% <%email%>
+    %{author} <%{email}>
 
 Copyright:
 
-    <Copyright (C) %year% %author%>
+    <Copyright (C) %{year} %{author}>
 
 License:
 
-    see "/usr/share/common-licenses/%license%".
+    see "/usr/share/common-licenses/%{license}".
 
 The Debian packaging is:
 
-    Copyright (C) year %author% <%email%>
+    Copyright (C) year %{author} <%{email}>
 
 and is licensed,
-see "/usr/share/common-licenses/%license%".
+see "/usr/share/common-licenses/%{license}".

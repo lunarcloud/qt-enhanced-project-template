@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    this->setWindowTitle("%ProductName%");
+    this->setWindowTitle("%{ProductName}");
 
 #ifdef Q_OS_MACX
 
@@ -66,13 +66,13 @@ void MainWindow::showEvent(QShowEvent *e)
 void MainWindow::about()
 {
     QMessageBox::about(this,
-                       "About %ProductName%",
-                       QString("<html><b><p>%short_description%</p></b>")
-                       + QString("<p>%long_description%</p><br>")
-                       + QString("Author: %author% <%email%><br>")
-                       + QString("Homepage: %homepage%<br>")
-                       + QString("License: %license%<br>")
-                       + QString("<b>Copyright &copy; %year%, %Company%</b>")
+                       "About %{ProductName}",
+                       QString("<html><b><p>%{short_description}</p></b>")
+                       + QString("<p>%{long_description}</p><br>")
+                       + QString("Author: %{author} <%{email}><br>")
+                       + QString("Homepage: %{homepage}<br>")
+                       + QString("License: %{license}<br>")
+                       + QString("<b>Copyright &copy; %{year}, %{Company}</b>")
                        );
 }
 
@@ -108,7 +108,7 @@ void MainWindow::setIconNumber(int number)
 
 #ifdef Q_OS_LINUX
     QDBusMessage signal = QDBusMessage::createSignal("/", "com.canonical.Unity.LauncherEntry", "Update");
-    signal << "application://%ProductName%.desktop";
+    signal << "application://%{ProductName}.desktop";
     QVariantMap setProperty;
     setProperty.insert("count", qint64(number));
     setProperty.insert("count-visible", true);
@@ -133,7 +133,7 @@ void MainWindow::clearIconNumber()
 
 #ifdef Q_OS_LINUX
     QDBusMessage signal = QDBusMessage::createSignal("/", "com.canonical.Unity.LauncherEntry", "Update");
-    signal << "application://%ProductName%.desktop";
+    signal << "application://%{ProductName}.desktop";
     QVariantMap setProperty;
     setProperty.insert("count", qint64(0));
     setProperty.insert("count-visible", false);

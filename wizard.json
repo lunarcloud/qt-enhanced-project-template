@@ -1,0 +1,341 @@
+{
+    "version": 1,
+    "supportedProjectTypes": [ "Qbs.QbsProject", "Qt4ProjectManager.Qt4Project" ],
+    "id": "B.CrossPlatformWidgetApp",
+    "category": "F.Application",
+    "trDescription": "Creates a cross-platform widget-based project. Intended for Windows, OS X, and Ubuntu.",
+    "trDisplayName": "Cross-Platform Desktop App (Widgets)",
+    "trDisplayCategory": "Application",
+    "icon": "Qt.png",
+    "featuresRequired": [ "QtSupport.Wizards.FeatureQt" ],	
+    "enabled": "%{JS: [ %{Plugins} ].indexOf('QmakeProjectManager') >= 0 || [ %{Plugins} ].indexOf('QbsProjectManager') >= 0}",
+	"options":
+    [
+        { "key": "ProjectFile", "value": "%{JS: '%{BuildSystem}' === 'qmake' ? '%{ProFile}' : '%{QbsFile}'}" },
+        { "key": "ProFile", "value": "%{JS: Util.fileName('%{ProjectDirectory}/%{ProjectName}', 'pro')}" },
+        { "key": "QbsFile", "value": "%{JS: Util.fileName('%{ProjectDirectory}/%{ProjectName}', 'qbs')}" }
+    ],
+	"pages":
+	[
+		{
+            "trDisplayName": "Project Location",
+            "trShortTitle": "Location",
+            "typeId": "Project"
+        },
+		{
+            "trDisplayName": "Define Build System",
+            "trShortTitle": "Build System",
+            "typeId": "Fields",
+            "enabled": "%{JS: ! %{IsSubproject}}",
+            "data":
+            [
+                {
+                    "name": "BuildSystem",
+                    "trDisplayName": "Build system:",
+                    "type": "ComboBox",
+                    "data":
+                    {
+                        "index": 1,
+                        "items":
+                        [
+                            {
+                                "trKey": "qmake",
+                                "value": "qmake",
+                                "condition": "%{JS: [ %{Plugins} ].indexOf('QmakeProjectManager') >= 0}"
+                            },
+                            {
+                                "trKey": "Qbs",
+                                "value": "qbs",
+                                "condition": "%{JS: [ %{Plugins} ].indexOf('QbsProjectManager') >= 0}"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+		{
+			"trDisplayName": "Project Details",
+			"trShortTitle": "Details",
+			"typeId": "Fields",
+			"data" :
+			[
+				{
+					"name": "ProductName",
+					"trDisplayName": "Product Name:",
+					"mandatory": true,
+					"type": "LineEdit",
+					"data":
+					{
+						"trText": "App Name"
+					}
+				},
+				{
+					"name": "Company",
+					"trDisplayName": "Company:",
+					"mandatory": true,
+					"type": "LineEdit",
+					"data":
+					{
+						"trText": "Business, Inc."
+					}
+				},
+				{
+					"name": "author",
+					"trDisplayName": "Author:",
+					"mandatory": true,
+					"type": "LineEdit",
+					"data":
+					{
+						"trText": "John Doe"
+					}
+				},
+				{
+					"name": "email",
+					"trDisplayName": "Email:",
+					"mandatory": true,
+					"type": "LineEdit",
+					"data":
+					{
+						"trText": "you@place.com"
+					}
+				},
+				{
+					"name": "homepage",
+					"trDisplayName": "Home page:",
+					"mandatory": true,
+					"type": "LineEdit",
+					"data":
+					{
+						"trText": "http://asdf.com/"
+					}
+				},
+				{
+					"name": "year",
+					"trDisplayName": "Current Year:",
+					"mandatory": true,
+					"type": "LineEdit",
+					"data":
+					{
+						"trText": "2017"
+					}
+				},
+				{
+					"name": "short_description",
+					"trDisplayName": "Short Description:",
+					"mandatory": false,
+					"type": "LineEdit"
+				},
+				{
+					"name": "long_description",
+					"trDisplayName": "Long Description:",
+					"mandatory": false,
+					"type": "LineEdit"
+				},
+				{
+					"name": "license",
+					"trDisplayName": "License:",
+					"mandatory": true,
+					"type": "ComboBox",
+					"data":
+                    {
+                        "index": 0,
+                        "items":
+                        [
+                            {
+                                "trKey": "Apache-2.0",
+                                "value": "Apache-2.0"
+                            },
+                            {
+                                "trKey": "BSD",
+                                "value": "BSD"
+                            },
+                            {
+                                "trKey": "GFDL",
+                                "value": "GFDL"
+                            },
+                            {
+                                "trKey": "GPL v2",
+                                "value": "GPL-2"
+                            },
+                            {
+                                "trKey": "GPL v3",
+                                "value": "GPL-3"
+                            },
+                            {
+                                "trKey": "LGPL v3",
+                                "value": "LGPL-3"
+                            },
+                            {
+                                "trKey": "Other",
+                                "value": "REPLACE_ME"
+                            }
+                        ]
+                    }
+				},
+				{
+					"name": "app_category",
+					"trDisplayName": "Category:",
+					"mandatory": true,
+					"type": "ComboBox",
+					"data":
+                    {
+                        "index": 0,
+						"items":
+                        [
+                            {
+                                "trKey": "Development",
+                                "value": "Development;"
+                            },
+                            {
+                                "trKey": "Education",
+                                "value": "Education;"
+                            },
+                            {
+                                "trKey": "Games",
+                                "value": "Games;"
+                            },
+                            {
+                                "trKey": "Graphics",
+                                "value": "Graphics;"
+                            },
+                            {
+                                "trKey": "Internet",
+                                "value": "Internet;"
+                            },
+                            {
+                                "trKey": "Multimedia",
+                                "value": "Multimedia;"
+                            },
+                            {
+                                "trKey": "Office",
+                                "value": "Office;"
+                            },
+                            {
+                                "trKey": "Settings",
+                                "value": "Settings;"
+                            },
+                            {
+                                "trKey": "System",
+                                "value": "System;"
+                            },
+                            {
+                                "trKey": "Utilities",
+                                "value": "Utilities;"
+                            }
+                        ]
+                    }
+				}
+			]
+		},
+		{
+            "trDisplayName": "Kit Selection",
+            "trShortTitle": "Kits",
+            "typeId": "Kits",
+            "enabled": "%{JS: ! %{IsSubproject}}",
+            "data": {
+                "projectFilePath": "%{ProjectFile}",
+                "requiredFeatures": [ "QtSupport.Wizards.FeatureQt" ]
+            }
+        },
+        {
+            "trDisplayName": "Project Management",
+            "trShortTitle": "Summary",
+            "typeId": "Summary"
+        }
+	],
+	"generators":
+    [
+        {
+            "typeId": "File",
+            "data":
+            [
+                {
+                    "source": "project.pro",
+                    "target": "%{ProFile}",
+                    "openAsProject": true,
+					"openInEditor": true,
+                    "condition": "%{JS: '%{BuildSystem}' === 'qmake'}"
+                },
+                {
+                    "source": "project.qbs",
+                    "target": "%{QbsFile}",
+                    "openAsProject": true,
+					"openInEditor": true,
+                    "condition": "%{JS: '%{BuildSystem}' === 'qbs'}"
+                },
+				{
+					"source": "main.cpp"
+				},
+				{
+					"source": "resources.qrc"
+				},
+				{
+					"source": "mainwindow.cpp",
+					"openInEditor": true
+				},
+				{
+					"source": "mainwindow.h"
+				},
+				{
+					"source": "mainwindow.ui"
+				},
+				{
+					"source": "debian/changelog",
+					"target": "debian/changelog"
+				},
+				{
+					"source": "debian/compat",
+					"target": "debian/compat"
+				},
+				{
+					"source": "debian/control",
+					"target": "debian/control"
+				},
+				{
+					"source": "debian/copyright",
+					"target": "debian/copyright"
+				},
+				{
+					"source": "debian/rules",
+					"target": "debian/rules"
+				},
+				{
+					"source": "icons/application.svg",
+					"target": "icons/application-%{ProjectName}.svg",
+					"isBinary": true
+				},
+				{
+					"source": "icons/application.png",
+					"target": "icons/application-%{ProjectName}.png",
+					"isBinary": true
+				},
+				{
+					"source": "icons/application.icns",
+					"target": "icons/application-%{ProjectName}.icns",
+					"isBinary": true
+				},
+				{
+					"source": "icons/application.ico",
+					"target": "icons/%{ProjectName}.ico",
+					"isBinary": true
+				},
+				{
+					"source": "application.desktop",
+					"target": "application-%{ProjectName}.desktop"
+				},
+				{
+					"source": "application.rc",
+					"target": "%{ProjectName}.rc"
+				},
+				{
+					"source": "Info.plist"
+				},
+				{
+					"source": "_README.md",
+					"target": "README.md",
+					"openInEditor": true
+				}
+			]
+		}
+	]
+}

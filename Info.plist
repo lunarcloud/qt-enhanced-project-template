@@ -5,13 +5,13 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>%ProductName%</string>
+	<string>%{ProductName}</string>
 	<key>CFBundleIconFile</key>
-	<string>application-%ProjectName%.icns</string>
+	<string>application-%{ProjectName}.icns</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.example.%Company%</string>
+	<string>com.example.%{Company}</string>
 	<key>CFBundleName</key>
-	<string>%ProductName%</string>
+	<string>%{ProductName}</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -21,6 +21,6 @@
 	<key>LSMinimumSystemVersion</key>
 	<string>10.6.6</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © %year%, %Company%</string>
+	<string>Copyright © %{year}, %{Company}</string>
 </dict>
 </plist>

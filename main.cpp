@@ -13,10 +13,10 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    QApplication::setWindowIcon(QIcon(":/app/icons/application-%ProjectName%.png"));
-    QCoreApplication::setOrganizationName("%Company%");
-    QCoreApplication::setOrganizationDomain("%homepage%");
-    QCoreApplication::setApplicationName("%ProductName%");
+    QApplication::setWindowIcon(QIcon(":/app/icons/application-%{ProjectName}.png"));
+    QCoreApplication::setOrganizationName("%{Company}");
+    QCoreApplication::setOrganizationDomain("%{homepage}");
+    QCoreApplication::setApplicationName("%{ProductName}");
 
     MainWindow window;
 
@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
 
 #ifdef Q_OS_LINUX
     QDBusMessage signal = QDBusMessage::createSignal("/", "com.canonical.Unity.LauncherEntry", "Update");
-    signal << "application://%ProductName%.desktop";
+    signal << "application://%{ProductName}.desktop";
     QVariantMap setProperty;
     setProperty.insert("count", qint64(0));
     setProperty.insert("count-visible", false);

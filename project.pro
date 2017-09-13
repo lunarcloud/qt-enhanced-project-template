@@ -1,10 +1,10 @@
 #-------------------------------------------------
 #
-# %ProductName%
+# %{ProductName}
 #
-# %short_description%
+# %{short_description}
 #
-# @author %author%
+# @author %{author}
 #
 ##-------------------------------------------------
 
@@ -14,28 +14,28 @@ TEMPLATE = app
 
 win32   {
     QT += winextras
-    TARGET = "%ProductName%"
+    TARGET = "%{ProductName}"
 
-    RC_FILE = %ProjectName%.rc
+    RC_FILE = %{ProjectName}.rc
 }
 
 macx   {
     QT += macextras
-    TARGET = "%ProductName%"
+    TARGET = "%{ProductName}"
 
-    ICON = icons/application-%ProjectName%.icns
+    ICON = icons/application-%{ProjectName}.icns
     QMAKE_INFO_PLIST = Info.plist
 }
 
 linux-*   {
     QT += dbus
-    TARGET = %ProjectName%
+    TARGET = %{ProjectName}
 
     target.path = /usr/bin
     icon.path = /usr/share/pixmaps
-    icon.files = icons/application-%ProjectName%.png
+    icon.files = icons/application-%{ProjectName}.png
     desktop.path = /usr/share/applications
-    desktop.files = application-%ProjectName%.desktop
+    desktop.files = application-%{ProjectName}.desktop
 
     INSTALLS += target icon desktop
 }
@@ -50,10 +50,10 @@ FORMS    += mainwindow.ui
 RESOURCES += resources.qrc
 
 OTHER_FILES += application.desktop \
-               icons/application-%ProjectName%.svg \
-               icons/application-%ProjectName%.png \
-               icons/application-%ProjectName%.icns \
-               icons/%ProjectName%.ico \
-               %ProjectName%.rc \
+               icons/application-%{ProjectName}.svg \
+               icons/application-%{ProjectName}.png \
+               icons/application-%{ProjectName}.icns \
+               icons/%{ProjectName}.ico \
+               %{ProjectName}.rc \
                Info.plist \
                README.md

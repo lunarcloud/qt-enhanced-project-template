@@ -1,45 +1,45 @@
 /*-------------------------------------------------
 *
-* %ProductName%
+* %{ProductName}
 *
-* %short_description%
+* %{short_description}
 *
-* @author %author%
+* @author %{author}
 *
 *-------------------------------------------------*/
 import qbs 1.0
 
 Application {
-	name: "%ProductName%"
+	name: "%{ProductName}"
     files: [
         "main.cpp",
         "mainwindow.cpp",
         "mainwindow.h",
         "mainwindow.ui",
         "resources.qrc",
-        "icons/application-%ProjectName%.svg",
+        "icons/application-%{ProjectName}.svg",
         "README.md"
     ]
     Group {
         condition: qbs.targetOS.contains("windows")
         name: "Windows"
-        files: ["icons/%ProjectName%.ico", "%ProjectName%.rc"]
+        files: ["icons/%{ProjectName}.ico", "%{ProjectName}.rc"]
     }
     Group {
         condition: qbs.targetOS.contains("linux")
         name: "Linux"
-        Application.targetName: "%ProjectName%"
-        files: ["application.desktop", "icons/application-%ProjectName%.png", "application-%ProjectName%.desktop"]
+        Application.targetName: "%{ProjectName}"
+        files: ["application.desktop", "icons/application-%{ProjectName}.png", "application-%{ProjectName}.desktop"]
         //target.path = /usr/bin
         //icon.path = /usr/share/pixmaps
-        //icon.files = icons/application-%ProjectName%.png
+        //icon.files = icons/application-%{ProjectName}.png
         //desktop.path = /usr/share/applications
-        //desktop.files = application-%ProjectName%.desktop
+        //desktop.files = application-%{ProjectName}.desktop
     }
     Group {
         condition: qbs.targetOS.contains("macos")
         name: "macOS"
-        files: ["Info.plist", "icons/application-%ProjectName%.icns"]
+        files: ["Info.plist", "icons/application-%{ProjectName}.icns"]
         bundle.infoPlistFile: "Info.plist"
 		/* Following is not tested
         dmg.backgroundColor: "#41cd52"
