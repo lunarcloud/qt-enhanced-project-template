@@ -7,12 +7,11 @@ Blur behind is enabled, extending the glass to the toolbars, an rc file and an i
 
 ### Deployment
 * Use dependency walker to find the DLL files you'll need to include: http://www.dependencywalker.com/
-* Then use an installer maker, I suggest Inno Setup due to it being easy: http://www.jrsoftware.org/isinfo.php
+* Then use an installer maker, I suggest NSIS (http://hmne.sourceforge.net/)
 
 OS X
 ----------
 For Mac, an empty menu to add actions to is included, which will show up as the dock's menu.
-Unified title and toolbar is enablable, creating the very mac effect of your toolbars being on the outside of the app, like in Finder or iTunes.
 There's an included icns file.
 
 ### Deployment

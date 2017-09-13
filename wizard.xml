@@ -14,7 +14,7 @@
         Develop a cross-platform widget-based project.
         Intended for Windows, OS X, and Ubuntu.
     </description>
-    <displayname>Desktop App (Widget-based)</displayname>
+    <displayname>Desktop App (Widget)</displayname>
     <displaycategory>Enhanced Project</displaycategory>
     <files>
         <file source="main.cpp" openeditor="false"/>
@@ -49,6 +49,7 @@
 
         <!-- Project File -->
         <file source="project.pro" target="%ProjectName%.pro" openproject="true" openeditor="true"/>
+        <file source="project.qbs" target="%ProjectName%.qbs" openproject="true" openeditor="false"/>
     </files>
 
     <fieldpagetitle>Project Details</fieldpagetitle>
@@ -152,30 +153,6 @@
                 </comboentries>
             </fieldcontrol>
             <fielddescription>Category:</fielddescription>
-        </field>
-
-        <!--
-        Show a list of useful libraries to link against(IF PRESENT!)
-        -->
-        <field name="QtNetwork">
-            <fieldcontrol class="QCheckBox" truevalue=" network" falsevalue="" />
-            <fielddescription>Link to QtNetwork module</fielddescription>
-        </field>
-        <field name="QtDBus">
-            <fieldcontrol class="QCheckBox" truevalue=" dbus" falsevalue="" />
-            <fielddescription>Link to QtDBus module</fielddescription>
-        </field>
-        <field name="QtSQL">
-            <fieldcontrol class="QCheckBox" truevalue=" sql" falsevalue="" />
-            <fielddescription>Link to QtSql module</fielddescription>
-        </field>
-        <field name="QtWebkit">
-            <fieldcontrol class="QCheckBox" truevalue=" webkit" falsevalue="" />
-            <fielddescription>Link to QtWebkit module</fielddescription>
-        </field>
-        <field name="OpenGL">
-            <fieldcontrol class="QCheckBox" truevalue=" opengl" falsevalue="" />
-            <fielddescription>Link to OpenGL</fielddescription>
         </field>
     </fields>
 </wizard>

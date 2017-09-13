@@ -30,8 +30,6 @@ MainWindow::MainWindow(QWidget *parent) :
     // Add actions to the menu
 
     qt_mac_set_dock_menu(menu);
-
-    //setUnifiedTitleAndToolBarOnMac(true); // Has some bugs with certain OpenGL widgets, but looks nice
 #endif
 
 #ifdef Q_OS_WIN
