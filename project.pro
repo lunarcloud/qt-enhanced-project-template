@@ -8,7 +8,7 @@
 #
 ##-------------------------------------------------
 
-QT       += core gui
+QT += core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TEMPLATE = app
 
@@ -49,11 +49,11 @@ FORMS    += mainwindow.ui
 
 RESOURCES += resources.qrc
 
-OTHER_FILES += application.desktop \
-               icons/application-%{ProjectName}.svg \
-               icons/application-%{ProjectName}.png \
-               icons/application-%{ProjectName}.icns \
-               icons/%{ProjectName}.ico \
-               %{ProjectName}.rc \
-               Info.plist \
-               README.md
+OTHER_FILES +=  application.desktop \
+                icons/application-%{ProjectName}.svg \
+                icons/application-%{ProjectName}.png \
+                icons/application-%{ProjectName}.icns \
+                icons/%{ProjectName}.ico \
+                %{ProjectName}.rc \
+                Info.plist \
+                README.md
