@@ -29,8 +29,7 @@ Project {
         Group {
             condition: qbs.targetOS.contains("linux")
             name: "Linux"
-            Application.targetName: "%{ProjectName}"
-            files: ["application.desktop", "icons/application-%{ProjectName}.png", "application-%{ProjectName}.desktop"]
+            files: ["icons/application-%{ProjectName}.png", "application-%{ProjectName}.desktop"]
             //target.path = /usr/bin
             //icon.path = /usr/share/pixmaps
             //icon.files = icons/application-%{ProjectName}.png
@@ -56,7 +55,7 @@ Project {
         }
         Depends {
             condition: qbs.targetOS.contains("linux")
-            name: "Qt.dbus"
+            name: { name: "Qt"; submodules: ["dbus"] }
         }
         Depends { name: "Qt"; submodules: ["core", "gui", "widgets"] }
         Depends { name: "cpp" }
