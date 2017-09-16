@@ -55,7 +55,7 @@ Project {
         }
         Depends {
             condition: qbs.targetOS.contains("linux")
-            name: { name: "Qt"; submodules: ["dbus"] }
+            name: "Qt.dbus"
         }
         Depends { name: "Qt"; submodules: ["core", "gui", "widgets"] }
         Depends { name: "cpp" }

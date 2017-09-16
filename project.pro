@@ -11,17 +11,16 @@
 QT += core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TEMPLATE = app
+TARGET = "%{ProductName}"
 
 win32   {
     QT += winextras
-    TARGET = "%{ProductName}"
 
     RC_FILE = %{ProjectName}.rc
 }
 
 macx   {
     QT += macextras
-    TARGET = "%{ProductName}"
 
     ICON = icons/application-%{ProjectName}.icns
     QMAKE_INFO_PLIST = Info.plist
@@ -29,7 +28,6 @@ macx   {
 
 linux-*   {
     QT += dbus
-    TARGET = %{ProjectName}
 
     target.path = /usr/bin
     icon.path = /usr/share/pixmaps
