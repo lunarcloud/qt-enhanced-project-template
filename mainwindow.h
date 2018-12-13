@@ -3,7 +3,9 @@
 
 #include <QMainWindow>
 #ifdef Q_OS_LINUX
+#ifndef Q_OS_ANDROID
     #include <QtDBus>
+#endif
 #endif
 
 namespace Ui {
@@ -19,7 +21,7 @@ class MainWindow : public QMainWindow
 protected:
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     void showEvent(QShowEvent *e);
 

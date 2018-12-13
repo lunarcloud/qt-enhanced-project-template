@@ -6,7 +6,9 @@
 #endif
 
 #ifdef Q_OS_LINUX
-    #include <QtDBus>
+#ifndef Q_OS_ANDROID
+	#include <QtDBus>
+#endif
 #endif
 
 
@@ -34,6 +36,7 @@ int main(int argc, char *argv[])
 #endif
 
 #ifdef Q_OS_LINUX
+#ifndef Q_OS_ANDROID
     QDBusMessage signal = QDBusMessage::createSignal("/", "com.canonical.Unity.LauncherEntry", "Update");
     signal << "application://%{ProductName}.desktop";
     QVariantMap setProperty;
@@ -44,6 +47,7 @@ int main(int argc, char *argv[])
     setProperty.insert("urgent", false);
     signal << setProperty;
     QDBusConnection::sessionBus().send(signal);
+#endif
 #endif
 
     window.show();

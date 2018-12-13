@@ -2,10 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QtGui>
 #include <QMessageBox>
-
-#if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
-    #include <QtWidgets>
-#endif
+#include <QtWidgets>
 
 #ifdef Q_OS_WIN
     #include <QtWinExtras>
@@ -23,6 +20,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowTitle("%{ProductName}");
 
+    /* Setup Actions */
+    ui->action_About->setIcon(QIcon::fromTheme("help-about", this->style()->standardIcon(QStyle::SP_DialogHelpButton)));
+    ui->action_Quit->setIcon(QIcon::fromTheme("application-exit"));
+
+    /* Setup Main Toolbar */
+    ui->mainToolBar->addAction(ui->action_About);
+	
 #ifdef Q_OS_MACX
 
     /* Dock Menu */
@@ -34,17 +38,16 @@ MainWindow::MainWindow(QWidget *parent) :
 
 #ifdef Q_OS_WIN
     taskbarButton = new QWinTaskbarButton(this);
-    taskbarButton->setWindow(this->windowHandle());
 	
     /* Jump List */
     QWinJumpList jumplist;
     //Add categories, tasks, items, and links to the menu
 #endif
 
-    connect(ui->actionAbout_Qt,SIGNAL(triggered()),qApp,SLOT(aboutQt()));
-    connect(ui->action_About,SIGNAL(triggered()),this,SLOT(about()));
-    connect(ui->action_Quit,SIGNAL(triggered()),qApp,SLOT(quit()));
-    connect(qApp,SIGNAL(aboutToQuit()),this,SLOT(writeSettings()));
+    connect(ui->actionAbout_Qt, &QAction::triggered, qApp, &QApplication::aboutQt);
+    connect(ui->action_About, &QAction::triggered, this, &MainWindow::about);
+    connect(ui->action_Quit, &QAction::triggered, qApp, &QApplication::quit);
+    connect(qApp, &QApplication::aboutToQuit, this, &MainWindow::writeSettings);
 
     readSettings();
 }
@@ -57,7 +60,7 @@ MainWindow::~MainWindow()
 void MainWindow::showEvent(QShowEvent *e)
 {
 #ifdef Q_OS_WIN32
-    taskbarButton->setWindow(this->windowHandle());
+    taskbarButton->setWindow(windowHandle());
 #endif
 
     e->accept();
@@ -78,6 +81,10 @@ void MainWindow::about()
 
 void MainWindow::setIconNumber(int number)
 {
+#ifdef Q_OS_ANDROID
+    Q_UNUSED( number )
+#endif
+
 #ifdef Q_OS_MACX
     QtMac::setBadgeLabelText(QString::number(number));
 #endif
@@ -87,26 +94,30 @@ void MainWindow::setIconNumber(int number)
     if (number > 99) value = "+";
     if (number < -99) value = "-";
 
-    QImage image = QImage(64,64,QImage::Format_ARGB32);
-    QPainter painter(&image);
-    painter.setBackgroundMode(Qt::TransparentMode);
-    painter.setBrush(QBrush(Qt::red));
-    painter.drawEllipse(0, 0, 64, 64);
-    painter.setPen(Qt::white);
+    const int size = 64;
+    const int edgeMargin = abs(number) > 99 ? 8 : 4;
+    const int fontsize = size - 2 - ( abs(number) > 99 ? 0 : edgeMargin * 4 );
+    QImage image = QImage(size, size, QImage::Format_ARGB32);
+	{
+		QPainter painter(&image);
+        painter.setRenderHint( QPainter::Antialiasing , true );
+		painter.setBackgroundMode(Qt::TransparentMode);
+		painter.setBrush(QBrush(Qt::red));
+		painter.drawEllipse(1, 1, size-2, size-2);
+		painter.setPen(Qt::white);
 
-    int fontsize = value == "+" ? 54 : ( value.length() == 1 ? 48 : 32 );
-    painter.setFont(QFont("Segoe UI", fontsize, QFont::Bold));
+        QFont font = QApplication::font("QMenu"); /* Default UI font */
+        font.setPixelSize(fontsize);
+        font.setBold(true);
+        painter.setFont(font);
 
-    int antimargin = value == "+" ? -8 : -4;
-    painter.drawText(0, antimargin, 64, 64,
-                     Qt::AlignCenter|Qt::AlignTop,
-                     value);
-
-//    taskbarButton->clearOverlayIcon();
-    taskbarButton->setOverlayIcon(QIcon(QPixmap::fromImage(image)));
+        painter.drawText(0, -1 * edgeMargin, size, size, Qt::AlignCenter, value);
+	}	
+    taskbarButton->setOverlayIcon(QIcon(QPixmap::fromImage(image, Qt::ImageConversionFlag::AutoColor)));
 #endif
 
 #ifdef Q_OS_LINUX
+#ifndef Q_OS_ANDROID
     QDBusMessage signal = QDBusMessage::createSignal("/", "com.canonical.Unity.LauncherEntry", "Update");
     signal << "application://%{ProductName}.desktop";
     QVariantMap setProperty;
@@ -117,6 +128,7 @@ void MainWindow::setIconNumber(int number)
     setProperty.insert("urgent", true);
     signal << setProperty;
     QDBusConnection::sessionBus().send(signal);
+#endif
 #endif
 }
 
@@ -132,6 +144,7 @@ void MainWindow::clearIconNumber()
 #endif
 
 #ifdef Q_OS_LINUX
+#ifndef Q_OS_ANDROID
     QDBusMessage signal = QDBusMessage::createSignal("/", "com.canonical.Unity.LauncherEntry", "Update");
     signal << "application://%{ProductName}.desktop";
     QVariantMap setProperty;
@@ -142,6 +155,7 @@ void MainWindow::clearIconNumber()
     setProperty.insert("urgent", false);
     signal << setProperty;
     QDBusConnection::sessionBus().send(signal);
+#endif
 #endif
 }
 

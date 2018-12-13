@@ -8,8 +8,7 @@
 #
 ##-------------------------------------------------
 
-QT += core gui
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+QT += core gui widgets
 TEMPLATE = app
 TARGET = "%{ProductName}"
 
@@ -26,7 +25,7 @@ macx   {
     QMAKE_INFO_PLIST = Info.plist
 }
 
-linux-*   {
+linux:!android   {
     QT += dbus
 
     target.path = /usr/bin
@@ -38,8 +37,20 @@ linux-*   {
     INSTALLS += target icon desktop
 }
 
-SOURCES += main.cpp\
-        mainwindow.cpp \
+android {
+    #QT += androidextras
+    TARGET = %{ProjectName}
+    INSTALLS += target
+    ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
+	
+	DISTFILES += \\
+		android/AndroidManifest.xml \\
+		android/res/values/libs.xml \\
+		android/build.gradle
+}
+
+SOURCES += main.cpp \\
+        mainwindow.cpp
 
 HEADERS  += mainwindow.h
 
@@ -47,11 +58,11 @@ FORMS    += mainwindow.ui
 
 RESOURCES += resources.qrc
 
-OTHER_FILES +=  application.desktop \
-                icons/application-%{ProjectName}.svg \
-                icons/application-%{ProjectName}.png \
-                icons/application-%{ProjectName}.icns \
-                icons/%{ProjectName}.ico \
-                %{ProjectName}.rc \
-                Info.plist \
+OTHER_FILES +=  application.desktop \\
+                icons/application-%{ProjectName}.svg \\
+                icons/application-%{ProjectName}.png \\
+                icons/application-%{ProjectName}.icns \\
+                icons/%{ProjectName}.ico \\
+                %{ProjectName}.rc \\
+                Info.plist \\
                 README.md
